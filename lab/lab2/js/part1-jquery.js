@@ -170,4 +170,70 @@ var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/ton
 // been interpreted. It is, therefore, an example of asynchronous behavior.
 $(document).ready(function() {
   // Do your stuff here
+ //Task 1
+ $("#main-heading").text("Bakery");
+ $("#text-label1").text("Name");
+ $("#text-label2").text("Lat");
+ $("#text-label3").text("Long");
+ $("#number-label").text("Rank");
+ $("#checkbox-label1").text("Open on Sunday?");
+ $("#checkbox-label2").text("Take-out friendly?");
+ $("#color-label").text("Marker");
+ $("button").text("Click me");
+
+ //Task 2
+ $("#text-input1").val("Beiler's Bakery");
+ $("#text-input2").val("39.953335");
+ $("#text-input3").val("-75.158831");
+ $("#numeric-input").val(1);
+ $("#cbox-input1").prop('checked', true);
+ $("#cbox-input2").prop('checked', true);
+ $("#color-input").val('#ff0000');
+
+ //Task 3
+ $('button').click(function(){
+   var report= new Object();
+   report[$("#text-label1").text()]= $("#text-input1").val();
+   report[$("#text-label2").text()]= $("#text-input2").val();
+   report[$("#text-label3").text()]= $("#text-input3").val();
+   report[$("#number-label").text()]=$("#numeric-input").val();
+   report[$("#checkbox-label1").text()]= $("#cbox-input1").prop('checked');
+   report[$("#checkbox-label2").text()]= $("#cbox-input2").prop('checked');
+   report[$("#color-label").text()] = $("#color-input").val();
+   console.log(report);
+});
+
+ //Task 4
+ function input(){
+ $("#text-input1").prop('disabled', false);
+ $("#text-input2").prop('disabled', false);
+ $("#text-input3").prop('disabled', false);
+ $("#numeric-input").prop('disabled', false);
+ $("#cbox-input1").prop('disabled', false);
+ $("#cbox-input2").prop('disabled', false);
+ $("#color-input").prop('disabled', false);
+}
+input();
+
+ //Task 5
+ $('button').click(function(){
+   console.log(input());
+});
+
+//Task 6
+$('button').click(function(){
+
+$("#text-label1").text("Description");
+$("#text-label2").text("lat");
+$("#text-label3").text("long");
+$("#color-label").text("color");
+
+$("#text-input1").prop('disabled', false); //Type in Beiler's Bakery or anything you like
+$("#text-input2").prop('disabled', false); //Type in 39.953335
+$("#text-input3").prop('disabled', false); //Type in -75.158831
+$("#color-input").prop('disabled', false); //Select red
+
+var whereBakeryAt = L.circleMarker([$("#text-input2").val(), $("#text-input3").val()], {color: $("#color-input").val()}).bindPopup($("#text-input1").val()).addTo(map);
+});
+
 });
